@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-typography {
+  background-color: #fafafa;
+}
+
+.expanded-toolbar {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 48px;
+}

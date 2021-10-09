@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" class="expanded-toolbar">
+  <span>
+    <button mat-button routerLink="/" class="title">{{title}}</button>
+    <button mat-button routerLink="/">Home</button>
+    <button mat-button routerLink="/board">Board</button>
+    <button mat-button routerLink="/issues">Issues</button>
+    <button mat-button routerLink="/projects">Projects</button>
+    <button mat-button routerLink="/users">Users</button>
+  </span>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button>Logout</button>
+    <button mat-button routerLink="/new-issue">Create</button>
+  </div>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+  <button mat-menu-item routerLink="/">Home</button>
+  <button mat-menu-item routerLink="/login">Login</button>
+  <button mat-menu-item >Logout</button>
+</mat-menu>
+<router-outlet></router-outlet>

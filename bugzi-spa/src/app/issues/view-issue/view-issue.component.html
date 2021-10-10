@@ -1,1 +1,65 @@
-<p>view-issue works!</p>
+<mat-card class="issue">
+  <mat-card-content *ngIf="issue">
+    <form [formGroup]="form">
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Title" formControlName="title" required />
+      </mat-form-field>
+      <mat-form-field class="selects">
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type" required>
+          <mat-option value="Epic">Epic</mat-option>
+          <mat-option value="Bug">Bug</mat-option>
+          <mat-option value="Story">Story</mat-option>
+          <mat-option value="Task">Task</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="selects">
+        <mat-label>Severity</mat-label>
+        <mat-select formControlName="severity" required>
+          <mat-option value="Blocker">Blocker</mat-option>
+          <mat-option value="Critical">Critical</mat-option>
+          <mat-option value="Major">Major</mat-option>
+          <mat-option value="Minor">Minor</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="selects">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option value="New">New</mat-option>
+          <mat-option value="Inprogress">Inprogress</mat-option>
+          <mat-option value="Testing">Testing</mat-option>
+          <mat-option value="Done">Done</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Reported By"
+          formControlName="reportedBy"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Reported On"
+          formControlName="createdAt"
+          required/>
+      </mat-form-field>
+      <mat-form-field
+        class="full-width-input"
+        floatLabel="always">
+        <textarea
+          matInput
+          placeholder="Description"
+          formControlName="description"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="20"
+          required
+        ></textarea>
+      </mat-form-field>
+      <!-- <button mat-flat-button color="primary" class="btn-login">Save</button> -->
+    </form>
+  </mat-card-content>
+</mat-card>

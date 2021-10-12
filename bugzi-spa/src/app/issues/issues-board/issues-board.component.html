@@ -1,1 +1,59 @@
-<p>issues-board works!</p>
+<div class="board" cdkDropListGroup>
+  <div class="issue-container">
+    <div class="title">TODO</div>
+    <div
+      id="todo-list"
+      cdkDropList
+      [cdkDropListData]="todoList"
+      class="issue-list"
+      (cdkDropListDropped)="drop($event)">
+      <mat-card class="issue-box" *ngFor="let issue of todoList" cdkDrag>
+        <div>{{ issue.id }}</div>
+        <div>{{ issue.title }}</div>
+        <div>{{ issue.type }}</div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="issue-container">
+    <div class="title">INPROGRESS</div>
+    <div
+      cdkDropList
+      [cdkDropListData]="inprogressList"
+      class="issue-list"
+      (cdkDropListDropped)="drop($event)">
+      <mat-card class="issue-box" *ngFor="let issue of inprogressList" cdkDrag>
+        <div>{{ issue.id }}</div>
+        <div>{{ issue.title }}</div>
+        <div>{{ issue.type }}</div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="issue-container">
+    <div class="title">TESTING</div>
+    <div
+      cdkDropList
+      [cdkDropListData]="testingList"
+      class="issue-list"
+      (cdkDropListDropped)="drop($event)">
+      <mat-card class="issue-box" *ngFor="let issue of testingList" cdkDrag>
+        <div>{{ issue.id }}</div>
+        <div>{{ issue.title }}</div>
+        <div>{{ issue.type }}</div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="issue-container">
+    <div class="title">DONE</div>
+    <div
+      cdkDropList
+      [cdkDropListData]="doneList"
+      class="issue-list"
+      (cdkDropListDropped)="drop($event)">
+      <mat-card class="issue-box" *ngFor="let issue of doneList" cdkDrag>
+        <div>{{ issue.id }}</div>
+        <div>{{ issue.title }}</div>
+        <div>{{ issue.type }}</div>
+      </mat-card>
+    </div>
+  </div>
+</div>

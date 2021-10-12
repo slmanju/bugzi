@@ -1,12 +1,12 @@
 <mat-card class="issue">
   <mat-card-content *ngIf="issue">
     <form [formGroup]="form">
-      <mat-form-field class="full-width-input">
-        <input matInput placeholder="Title" formControlName="title" required />
+      <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title" required class="editable"/>
       </mat-form-field>
       <mat-form-field class="selects">
         <mat-label>Type</mat-label>
-        <mat-select formControlName="type" required>
+        <mat-select formControlName="type" required class="editable">
           <mat-option value="Epic">Epic</mat-option>
           <mat-option value="Bug">Bug</mat-option>
           <mat-option value="Story">Story</mat-option>
@@ -15,7 +15,7 @@
       </mat-form-field>
       <mat-form-field class="selects">
         <mat-label>Severity</mat-label>
-        <mat-select formControlName="severity" required>
+        <mat-select formControlName="severity" required class="editable">
           <mat-option value="Blocker">Blocker</mat-option>
           <mat-option value="Critical">Critical</mat-option>
           <mat-option value="Major">Major</mat-option>
@@ -24,7 +24,7 @@
       </mat-form-field>
       <mat-form-field class="selects">
         <mat-label>Status</mat-label>
-        <mat-select formControlName="status" required>
+        <mat-select formControlName="status" required class="editable">
           <mat-option value="New">New</mat-option>
           <mat-option value="Inprogress">Inprogress</mat-option>
           <mat-option value="Testing">Testing</mat-option>
@@ -36,7 +36,7 @@
           matInput
           placeholder="Reported By"
           formControlName="reportedBy"
-          required
+          required class="editable"
         />
       </mat-form-field>
       <mat-form-field>
@@ -44,7 +44,7 @@
           matInput
           placeholder="Reported On"
           formControlName="createdAt"
-          required/>
+          required class="editable"/>
       </mat-form-field>
       <mat-form-field
         class="full-width-input"

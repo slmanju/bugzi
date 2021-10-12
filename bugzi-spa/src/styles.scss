@@ -3,13 +3,18 @@
 // @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 // @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html,
 body {
   margin: 0;
+  padding: 0;
   height: 100%;
-}
-body {
-  margin: 0;
+  box-sizing: border-box;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 

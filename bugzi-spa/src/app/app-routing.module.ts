@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './core/services/auth-guard.service';
 
 import { HomeComponent } from './home/home.component';
 import { IssuesBoardComponent } from './issues/issues-board/issues-board.component';
@@ -15,24 +16,32 @@ const routes: Routes = [
   },
   {
     path: 'new-issue',
-    component: NewIssueComponent
+    component: NewIssueComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'issues',
-    component: SearchIssuesComponent
+    component: SearchIssuesComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'issues/:id',
-    component: ViewIssueComponent
+    component: ViewIssueComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'board',
-    component: IssuesBoardComponent
+    component: IssuesBoardComponent,
+    canActivate: [ AuthGuardService ]
   },
   {
     path: 'login',
     component: LoginComponent,
   },
+  {
+    path: '**',
+    redirectTo: ''
+  }
 ];
 
 @NgModule({

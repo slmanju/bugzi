@@ -8,8 +8,8 @@
     <button mat-button routerLink="/users">Users</button>
   </span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <!-- <button mat-button routerLink="/login">Login</button> -->
-    <button mat-button>Logout</button>
+    <button mat-button routerLink="/login" *ngIf="!(auth$ | async)">Login</button>
+    <button mat-button (click)="onLogout()" *ngIf="(auth$ | async)">Logout</button>
     <button mat-button routerLink="/new-issue">Create</button>
   </div>
   <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -19,7 +19,7 @@
 <mat-menu x-position="before" #menu="matMenu">
   <button mat-menu-item routerLink="/">Home</button>
   <button mat-menu-item routerLink="/login">Login</button>
-  <button mat-menu-item >Logout</button>
+  <button mat-menu-item (click)="onLogout()">Logout</button>
 </mat-menu>
 <main>
   <router-outlet></router-outlet>

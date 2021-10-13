@@ -13,6 +13,12 @@ import { NewIssueComponent } from './issues/new-issue/new-issue.component';
 import { SearchIssuesComponent } from './issues/search-issues/search-issues.component';
 import { ViewIssueComponent } from './issues/view-issue/view-issue.component';
 import { IssuesBoardComponent } from './issues/issues-board/issues-board.component';
+import { StoreModule } from '@ngrx/store';
+
+import { authReducer } from './core/store/reducer/auth.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -31,7 +37,12 @@ import { IssuesBoardComponent } from './issues/issues-board/issues-board.compone
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StoreModule.forRoot({
+      auth: authReducer
+    }, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

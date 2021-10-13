@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './core/services/auth.service';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
+import { AppState } from './core/store/store.state';
+import { selectAuthenticated } from './core/store/selector/auth.selector';
+import { logout } from './core/store/action/auth.action';
 
 @Component({
   selector: 'app-root',
@@ -7,20 +13,19 @@ import { AuthService } from './core/services/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  
   title = 'Bugzi';
-  isAuthenticated = false;
+  auth$: Observable<boolean>;
 
-  constructor(public authService: AuthService) {
-    this.authService.authenticatedSubject.subscribe(
-      (isAuthenticated: boolean) => (this.isAuthenticated = isAuthenticated)
-    );
+  constructor(private store: Store<AppState>, private router: Router) {
   }
 
-  async ngOnInit(): Promise<void> {
-    this.isAuthenticated = await this.authService.checkAuthenticated();
+  ngOnInit() {
+    this.auth$ = this.store.select(selectAuthenticated);
   }
 
-  async logout(): Promise<void> {
-    await this.authService.logout('/');
+  onLogout() {
+    this.store.dispatch(logout());
+    this.router.navigate(['/login']);
   }
 }
